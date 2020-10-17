@@ -1,4 +1,4 @@
-package service;
+package in.co.ankitbansal.service;
 
 public interface DiceService {
 
