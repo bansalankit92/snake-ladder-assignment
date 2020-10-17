@@ -21,7 +21,7 @@ public class SingleBoardPlayerService {
             DiceService service) {
         this.board = new Board(boardSize, snakes, ladders);
         this.player = new Player(playerName);
-        this.board.getPlayerPieces().put(this.player.getId(), 0);
+        this.board.getPlayerPiecesPosition().put(this.player.getId(), 0);
         this.diceService = service;
     }
 
@@ -30,7 +30,7 @@ public class SingleBoardPlayerService {
         snakes.add(new Snake(14, 7));
         this.board = new Board(DEFAULT_BOARD_SIZE, snakes, new ArrayList<>());
         this.player = new Player(UUID.randomUUID().toString());
-        this.board.getPlayerPieces().put(this.player.getId(), 0);
+        this.board.getPlayerPiecesPosition().put(this.player.getId(), 0);
         this.diceService = new SingleDiceServiceImpl();
     }
 
@@ -39,7 +39,7 @@ public class SingleBoardPlayerService {
         snakes.add(new Snake(14, 7));
         this.board = new Board(DEFAULT_BOARD_SIZE, snakes, new ArrayList<>());
         this.player = new Player(UUID.randomUUID().toString());
-        this.board.getPlayerPieces().put(this.player.getId(), 0);
+        this.board.getPlayerPiecesPosition().put(this.player.getId(), 0);
         this.diceService = service;
     }
 
@@ -60,7 +60,7 @@ public class SingleBoardPlayerService {
     }
 
     public Board movePlayer(Player player, int positions) {
-        int oldPosition = board.getPlayerPieces().get(player.getId());
+        int oldPosition = board.getPlayerPiecesPosition().get(player.getId());
         int newPosition = oldPosition + positions;
 
         if (newPosition > board.getSize()) {
@@ -69,7 +69,7 @@ public class SingleBoardPlayerService {
             newPosition = getNewPositionAfterGoingThroughSnakesAndLadders(newPosition);
         }
 
-        board.getPlayerPieces().put(player.getId(), newPosition);
+        board.getPlayerPiecesPosition().put(player.getId(), newPosition);
 
         return board;
     }
@@ -80,25 +80,26 @@ public class SingleBoardPlayerService {
     }
 
     public boolean hasPlayerWon(Player player) {
-        int playerPosition = board.getPlayerPieces().get(player.getId());
+        int playerPosition = board.getPlayerPiecesPosition().get(player.getId());
         int winningPosition = board.getSize();
         return playerPosition == winningPosition;
     }
 
-    public Board getBoard(){
+    public Board getBoard() {
         return board;
     }
 
-    public Player getCurrentPlayer(){
+    public Player getCurrentPlayer() {
         return player;
     }
 
-    public Board playGame(Player player){
+    public Board playGame(Player player) {
         int rollDice = getTotalValueAfterDiceRolls();
-        return movePlayer(player,rollDice);
+        return movePlayer(player, rollDice);
     }
 
-    public int getPosition(Player player){
-        return this.board.getPlayerPieces().get(player.getId());
+    public int getPosition(Player player) {
+        return this.board.getPlayerPosition(player.getId());
     }
+
 }

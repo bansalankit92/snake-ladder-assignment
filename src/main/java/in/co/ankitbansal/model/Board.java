@@ -1,33 +1,29 @@
 package in.co.ankitbansal.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Board {
+
     private int size;
     private List<Snake> snakes;
     private List<Ladder> ladders;
-    private Map<String, Integer> playerPieces;
+    private Map<String, Integer> playerPiecesPosition;
 
-    public Board(int size) {
-        this.size = size;
-        this.snakes = new ArrayList<>();
-        this.ladders = new ArrayList<>();
-        this.playerPieces = new HashMap<>();
-    }
-
-
-    public Board(int size, List<Snake> snakes,List<Ladder> ladders) {
+    public Board(int size, List<Snake> snakes, List<Ladder> ladders) {
         this.size = size;
         this.snakes = snakes;
         this.ladders = ladders;
-        this.playerPieces = new HashMap<>();
+        this.playerPiecesPosition = new HashMap<>();
     }
 
     public int getSize() {
         return size;
+    }
+
+    public int getPlayerPosition(String playerId) {
+        return playerPiecesPosition.get(playerId);
     }
 
     public List<Snake> getSnakes() {
@@ -38,8 +34,8 @@ public class Board {
         return ladders;
     }
 
-    public Map<String, Integer> getPlayerPieces() {
-        return playerPieces;
+    public Map<String, Integer> getPlayerPiecesPosition() {
+        return playerPiecesPosition;
     }
 
 }
