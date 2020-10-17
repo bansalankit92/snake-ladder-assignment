@@ -1,7 +1,8 @@
 # snake-ladder-assignment
-Developing a Game of Snakes and Ladders
+Developing a Game of Snakes and Ladders  
 
-##Story #1: Basic Board
+
+## Story #1: Basic Board
   
   On a board (Of size 100), for a dice throw a player should
   move from initial position by the number on dice throw.
