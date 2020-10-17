@@ -34,6 +34,15 @@ public class SingleBoardPlayerService {
         this.diceService = new SingleDiceServiceImpl();
     }
 
+    public SingleBoardPlayerService(DiceService service) {
+        List<Snake> snakes = new ArrayList<>();
+        snakes.add(new Snake(14, 7));
+        this.board = new Board(DEFAULT_BOARD_SIZE, snakes, new ArrayList<>());
+        this.player = new Player(UUID.randomUUID().toString());
+        this.board.getPlayerPieces().put(this.player.getId(), 0);
+        this.diceService = service;
+    }
+
     public int getNewPositionAfterGoingThroughSnakesAndLadders(int newPosition) {
 
         for (Snake snake : board.getSnakes()) {
@@ -76,4 +85,20 @@ public class SingleBoardPlayerService {
         return playerPosition == winningPosition;
     }
 
+    public Board getBoard(){
+        return board;
+    }
+
+    public Player getCurrentPlayer(){
+        return player;
+    }
+
+    public Board playGame(Player player){
+        int rollDice = getTotalValueAfterDiceRolls();
+        return movePlayer(player,rollDice);
+    }
+
+    public int getPosition(Player player){
+        return this.board.getPlayerPieces().get(player.getId());
+    }
 }
