@@ -19,3 +19,8 @@ Developing a Game of Snakes and Ladders
    A dice that only throws Even numbers.
    The can game can be started with normal dice or crooked
    dice.  
+
+## How to run the program
+* Make sure you have gradle installed
+* Execute command ```$ gradle jar```
+* Run the code ```$ java -jar ./build/libs/snake-ladder-1.0-SNAPSHOT.jar```

@@ -5,16 +5,26 @@ plugins {
 group 'in.co.ankitbansal'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.9
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
 }
 
 test {
     useJUnitPlatform()
+    filter {
+        includeTestsMatching 'in.co.ankitbansal.*'
+    }
+}
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'in.co.ankitbansal.SnakeLadderApplication'
+        )
+    }
 }

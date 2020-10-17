@@ -131,9 +131,9 @@ class SingleBoardPlayerServiceTest {
         service = new SingleBoardPlayerService(new SingleCrookedDiceServiceImpl());
         Player player = service.getCurrentPlayer();
         assertEquals(0, service.playGame(player).getPlayerPosition(player.getId()) % 2);
-        assertEquals(0, service.playGame(player).getPlayerPosition(player.getId()) % 2);
-        assertEquals(0, service.playGame(player).getPlayerPosition(player.getId()) % 2);
-        assertEquals(0, service.playGame(player).getPlayerPosition(player.getId()) % 2);
+        assertEquals(0, service.getTotalValueAfterDiceRolls() % 2);
+        assertEquals(0, service.getTotalValueAfterDiceRolls() % 2);
+        assertEquals(0, service.getTotalValueAfterDiceRolls() % 2);
 
     }
 
