@@ -5,6 +5,7 @@ public class Snake {
     private int end;
 
     public Snake(int start, int end) {
+        if (start<end) throw new IllegalArgumentException("For snake start should be greater than end");
         this.start = start;
         this.end = end;
     }

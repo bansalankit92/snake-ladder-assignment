@@ -18,6 +18,14 @@ public class Board {
         this.playerPieces = new HashMap<>();
     }
 
+
+    public Board(int size, List<Snake> snakes,List<Ladder> ladders) {
+        this.size = size;
+        this.snakes = snakes;
+        this.ladders = ladders;
+        this.playerPieces = new HashMap<>();
+    }
+
     public int getSize() {
         return size;
     }
